@@ -194,10 +194,14 @@ Try {
 
 		# <Perform Uninstallation tasks here>
 		If (Test-Path -path "$envProgramFiles\insightsoftware\Spreadsheet Server Suite\Uninstall.exe") {
-			Execute-Process -Path "$envProgramFiles\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WindowStyle 'Hidden' -WaitForMsiExec:$true
+			Execute-Process -Path "$envProgramFiles\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WaitForMsiExec -WindowStyle 'Hidden'
+			## sleep for a bit as the uninstaller will exit too quickly while it's still running and SCCM will report a failed uninstall.
+			Start-Sleep -Seconds 20 
 		}
 		elseif (Test-Path -path "$envProgramFilesX86\insightsoftware\Spreadsheet Server Suite\Uninstall.exe") {
-			Execute-Process -Path "$envProgramFilesX86\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WindowStyle 'Hidden' -WaitForMsiExec:$true
+			Execute-Process -Path "$envProgramFilesX86\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WaitForMsiExec -WindowStyle 'Hidden'
+			## sleep for a bit as the uninstaller will exit too quickly while it's still running and SCCM will report a failed uninstall.
+			Start-Sleep -Seconds 20  
 		}
 		##*===============================================
 		##* POST-UNINSTALLATION
@@ -259,8 +263,8 @@ Catch {
 # SIG # Begin signature block
 # MIIZ7wYJKoZIhvcNAQcCoIIZ4DCCGdwCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDM3/qmT9V7N42X
-# c6zV5k9d0hIyseGtvh3zXrp+2TsssaCCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDKeObkjyVt1TQI
+# pleXmIPqXePmyhO8ISmFc2d0drn0ZaCCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
 # TuFS1zANBgkqhkiG9w0BAQUFADBXMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 # YmFsU2lnbiBudi1zYTEQMA4GA1UECxMHUm9vdCBDQTEbMBkGA1UEAxMSR2xvYmFs
 # U2lnbiBSb290IENBMB4XDTExMDQxMzEwMDAwMFoXDTI4MDEyODEyMDAwMFowUjEL
@@ -374,26 +378,26 @@ Catch {
 # CxMISW5Db21tb24xJTAjBgNVBAMTHEluQ29tbW9uIFJTQSBDb2RlIFNpZ25pbmcg
 # Q0ECEAcDcdEPeVpAcZkrlAdim+IwDQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGC
 # NwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgor
-# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQghcvbeeLM
-# P9EShw2iauP+N5t6wNvTfO3YJyyf+0jnowUwDQYJKoZIhvcNAQEBBQAEggEAGgUQ
-# 7IE427JRrlxW/incYEjEgB/ujKf9CzHvsIN4nlbnlxxDH2BHN6PWFWfWpu8TP0kq
-# Gfl4UK+lcpFXRcJzkDNnYwcYrKQfzUKbC6Y1ZOGKHd4V7jr6p5Vg5PHy27IYULGC
-# geHOc7BELAz6xMnp25erCdHLHzXehsWz2Xtz+eZ286HmcB2vr8VOA8pl2VL+IUl4
-# OyCkPB36yVo2zuqW86Fw0HqWRY0cyKY/Jdi0ZHTT66OVsd1bfZG7NENpxmRq4Z1T
-# 5MexcRuvZvcq85cPetCziJlbSzh+U2mNsxZuLBhlWaQmcoAaO61d3JRwyd1EhvWL
-# cyufkYxoMRgkXkXBTKGCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
+# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgzi/W+rKh
+# z4V7LzLcTzcalj5GIH3E2Qddz8MlcGAm870wDQYJKoZIhvcNAQEBBQAEggEAwyj8
+# pjpdzHBC1bvZDoyZPDNdY/nwg/w+nZF9GSE7lUc48NuvU9OqHNGVNxTDH9DvxMiE
+# ucOcJRuabjBNw5vph+Z7dfXsLe69rcQtAhzCUpHxtdnJr+uXwcg/qUApX5LTy7lv
+# lJZ5rpTV4Pf9xo+CmdFTyPnjbVBTPIGVwqu/xETtDtjfytbKUHNuAjcLgImCCfUN
+# wgPM4eGfXchlhAIHtF6e1oWtyhR95wHciTp0eGr4+Ch49V3eVduN2o8crRKXebKQ
+# DiyjyN1mjnpGgkO4PngVb5/d5XXKbMI8S8vehY6578+rqiqONZk1SCC8TKDm7QD/
+# WyNGepdNScmqYKF9EaGCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
 # CzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQD
 # Ex9HbG9iYWxTaWduIFRpbWVzdGFtcGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7p
 # GcxTQRQwCQYFKw4DAhoFAKCB/TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
-# CSqGSIb3DQEJBTEPFw0yMTAxMDcyMTA5MjJaMCMGCSqGSIb3DQEJBDEWBBTdeSx7
-# tnSK2MK7Cwe0Y4kpRwE8KzCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
+# CSqGSIb3DQEJBTEPFw0yMTAxMDcyMzA4NTFaMCMGCSqGSIb3DQEJBDEWBBTaniuA
+# OWpPJ3FKsb/vlsGC67W3/TCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
 # L6th9YOQlpUFCwAknFApM+x5MGwwVqRUMFIxCzAJBgNVBAYTAkJFMRkwFwYDVQQK
 # ExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQDEx9HbG9iYWxTaWduIFRpbWVzdGFt
 # cGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7pGcxTQRQwDQYJKoZIhvcNAQEBBQAE
-# ggEAR/e9YNlx+19jd1zQATYOSChm+Ggv9hzkbdjX9NxvL7yKNI/UITQyAtZp0A4u
-# JIWW1SR3qM5pN/94lvK/RZsOavshNr9JHIvMlAMnmdti0nlS2M7Y1MUlJ+mJfKet
-# q3NMrPtO/Og2ElUm8RiHGKpjZtoH0OBNIULo8WWSIfqLfnyWGgxobqWdCH4HCx8B
-# 6vs+qEN/+yl+HekK+4D4T954NL4zD8xlowTX58pO237aM3MwDd/s55+aGdcZl3C1
-# lMzah9pMsz7qPbSJnLYZaaNPo4/OMtUms+wq/ft2XvZT8n8m0cx4qj8pM1RzCoWi
-# R4gLvjd2kBQnWDiwvmPX4hKv1Q==
+# ggEAIffn8nQy3+B46jJ4XxLT2T5XAHuKgZUlqxXgVmtDkH0Pz4l7HPFu07ig6pEs
+# bZpXyyP451isJ7OoqvvwtClXyyrMZ2hXsmyEHZ29jzoZdgSHloGputLOxSAQZUC+
+# 5jjExX1jbUeFA54W92X9gIe1GU277RYNYOkppmVC/SItSsCHwl12ogd0miQtDrmV
+# mEF3osbqPfAkelZ8bYv6pZZSQIlr7j3E8OupirZlsHBjUxkfGFp/38ZEg7ZjmC1S
+# 5HWNv+6jlm9of9pn4xewOCEmcPx/uAdHiIKEmXRwsttcm28DgyaP620q8fbYVcTe
+# /ifr9lEuU5/yXY6Q8lV5Gb3z6A==
 # SIG # End signature block
