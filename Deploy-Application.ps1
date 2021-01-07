@@ -196,12 +196,12 @@ Try {
 		If (Test-Path -path "$envProgramFiles\insightsoftware\Spreadsheet Server Suite\Uninstall.exe") {
 			Execute-Process -Path "$envProgramFiles\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WaitForMsiExec -WindowStyle 'Hidden'
 			## sleep for a bit as the uninstaller will exit too quickly while it's still running and SCCM will report a failed uninstall.
-			Start-Sleep -Seconds 20 
+			Start-Sleep -Seconds 20
 		}
 		elseif (Test-Path -path "$envProgramFilesX86\insightsoftware\Spreadsheet Server Suite\Uninstall.exe") {
 			Execute-Process -Path "$envProgramFilesX86\insightsoftware\Spreadsheet Server Suite\Uninstall.exe" -Parameters '/S' -WaitForMsiExec -WindowStyle 'Hidden'
 			## sleep for a bit as the uninstaller will exit too quickly while it's still running and SCCM will report a failed uninstall.
-			Start-Sleep -Seconds 20  
+			Start-Sleep -Seconds 20
 		}
 		##*===============================================
 		##* POST-UNINSTALLATION
@@ -263,8 +263,8 @@ Catch {
 # SIG # Begin signature block
 # MIIZ7wYJKoZIhvcNAQcCoIIZ4DCCGdwCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDKeObkjyVt1TQI
-# pleXmIPqXePmyhO8ISmFc2d0drn0ZaCCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCgtvT7P+0wpGuV
+# n1Jck+SjY/P0uZ+x5t85iMum5lluXKCCFFwwggQUMIIC/KADAgECAgsEAAAAAAEv
 # TuFS1zANBgkqhkiG9w0BAQUFADBXMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 # YmFsU2lnbiBudi1zYTEQMA4GA1UECxMHUm9vdCBDQTEbMBkGA1UEAxMSR2xvYmFs
 # U2lnbiBSb290IENBMB4XDTExMDQxMzEwMDAwMFoXDTI4MDEyODEyMDAwMFowUjEL
@@ -378,26 +378,26 @@ Catch {
 # CxMISW5Db21tb24xJTAjBgNVBAMTHEluQ29tbW9uIFJTQSBDb2RlIFNpZ25pbmcg
 # Q0ECEAcDcdEPeVpAcZkrlAdim+IwDQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGC
 # NwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgor
-# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgzi/W+rKh
-# z4V7LzLcTzcalj5GIH3E2Qddz8MlcGAm870wDQYJKoZIhvcNAQEBBQAEggEAwyj8
-# pjpdzHBC1bvZDoyZPDNdY/nwg/w+nZF9GSE7lUc48NuvU9OqHNGVNxTDH9DvxMiE
-# ucOcJRuabjBNw5vph+Z7dfXsLe69rcQtAhzCUpHxtdnJr+uXwcg/qUApX5LTy7lv
-# lJZ5rpTV4Pf9xo+CmdFTyPnjbVBTPIGVwqu/xETtDtjfytbKUHNuAjcLgImCCfUN
-# wgPM4eGfXchlhAIHtF6e1oWtyhR95wHciTp0eGr4+Ch49V3eVduN2o8crRKXebKQ
-# DiyjyN1mjnpGgkO4PngVb5/d5XXKbMI8S8vehY6578+rqiqONZk1SCC8TKDm7QD/
-# WyNGepdNScmqYKF9EaGCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
+# BgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgrFfFvqfq
+# qet3Ds8XukMo9gF4DFQ4Yoxr9QNqQR+styswDQYJKoZIhvcNAQEBBQAEggEAvzNj
+# mHFro2AwGuEMNHuu4eXzQjKF4aLp9HRzhjw863r072I+T47IsuYlSgZmwpzJQomF
+# 7bR35YWGp9i4TH/aoHKS5GYPvmZ0JuAPhlzriDWXAvkp9dDQY3/lcqcu0VThugP+
+# FOBWj3AmWmLKMyKI0OBVzVM9DMfiDLGkAwvkmPKzH6ueybEbwU/V1cdWO9443Bek
+# lULXhWHZfqSbbw99bRxPJPxQc4uBqHmKd2glg9ksDJyNdyEj1yyylJrfJXxvMXyI
+# PzzVHKofANUZk8YbkOvrjtbPeH5PTir2cWnfZ8f8/Gmrt7az/grPBk0WTsvsniLx
+# lnRl1y8FUPwk34ivq6GCAqIwggKeBgkqhkiG9w0BCQYxggKPMIICiwIBATBoMFIx
 # CzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQD
 # Ex9HbG9iYWxTaWduIFRpbWVzdGFtcGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7p
 # GcxTQRQwCQYFKw4DAhoFAKCB/TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
-# CSqGSIb3DQEJBTEPFw0yMTAxMDcyMzA4NTFaMCMGCSqGSIb3DQEJBDEWBBTaniuA
-# OWpPJ3FKsb/vlsGC67W3/TCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
+# CSqGSIb3DQEJBTEPFw0yMTAxMDcyMzE1NDNaMCMGCSqGSIb3DQEJBDEWBBSBbEE7
+# h6Y9Rpe+2MbiBO+4ZKkgyDCBnQYLKoZIhvcNAQkQAgwxgY0wgYowgYcwgYQEFGO4
 # L6th9YOQlpUFCwAknFApM+x5MGwwVqRUMFIxCzAJBgNVBAYTAkJFMRkwFwYDVQQK
 # ExBHbG9iYWxTaWduIG52LXNhMSgwJgYDVQQDEx9HbG9iYWxTaWduIFRpbWVzdGFt
 # cGluZyBDQSAtIEcyAhIRIdaZp2SXPvH4Qn7pGcxTQRQwDQYJKoZIhvcNAQEBBQAE
-# ggEAIffn8nQy3+B46jJ4XxLT2T5XAHuKgZUlqxXgVmtDkH0Pz4l7HPFu07ig6pEs
-# bZpXyyP451isJ7OoqvvwtClXyyrMZ2hXsmyEHZ29jzoZdgSHloGputLOxSAQZUC+
-# 5jjExX1jbUeFA54W92X9gIe1GU277RYNYOkppmVC/SItSsCHwl12ogd0miQtDrmV
-# mEF3osbqPfAkelZ8bYv6pZZSQIlr7j3E8OupirZlsHBjUxkfGFp/38ZEg7ZjmC1S
-# 5HWNv+6jlm9of9pn4xewOCEmcPx/uAdHiIKEmXRwsttcm28DgyaP620q8fbYVcTe
-# /ifr9lEuU5/yXY6Q8lV5Gb3z6A==
+# ggEACqvXRmvroaLAP7vkl2hFRBJsD2Os35BwqPfhjgPxPwhPFpntEq9qj2YRvJmx
+# lcJNK7NejgaSmBBbZ/79dnODAy+nZstagL/8oV5sNZMV1euKChe8PaOGWZXNxNyr
+# ajnD4EEjbcjs7V56/RSBksT8Wfxk8Owh5r1ZPioAIKq4PCveqLcAU0vfu3yGNPpx
+# UoB+/B3EVs4FJVcMWN3/YJyIeG9lrN4lgIHBfEIThsdLXNgxla/92yhyQQOT2yqx
+# 2ijhj22oaE3KeSrpA0dbQxbvf+Z1RndG8fQGoeaeD65Bt9eolLiNYxpIFeA2z6iO
+# ey2lzS57okA9VNUq9eUVC02fYA==
 # SIG # End signature block
